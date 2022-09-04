@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections;
+using Full_GRASP_And_SOLID.Library;
 
 namespace Full_GRASP_And_SOLID.Library
 {
@@ -27,12 +28,16 @@ namespace Full_GRASP_And_SOLID.Library
 
         public void PrintRecipe()
         {
+            double CostoTotal = 0;
             Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
             foreach (Step step in this.steps)
             {
                 Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
-                    $"usando '{step.Equipment.Description}' durante {step.Time}");
+                    $"usando '{step.Equipment.Description}' durante {step.Time}s.");
+                CostoTotal += Cost.GetProductionCost(step);
             }
+            Console.WriteLine($"El costo total de producción es: {CostoTotal}");
+
         }
     }
 }
