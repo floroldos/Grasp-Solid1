@@ -6,8 +6,8 @@ namespace Full_GRASP_And_SOLID.Library
     {
         public static double GetProductionCost(Step pasos)
         {
-            double CostoInsumos = pasos.Input.UnitCost;
-            double CostoEquipamiento = (pasos.Equipment.HourlyCost*pasos.Time);
+            double CostoInsumos = ((pasos.Input.UnitCost * pasos.Quantity) / 1000);
+            double CostoEquipamiento = (pasos.Equipment.HourlyCost * (pasos.Time / 3600));
             double CostoTotal = (CostoInsumos + CostoEquipamiento);
             return CostoTotal;
         }
